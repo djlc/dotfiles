@@ -53,12 +53,21 @@ set number
 " 拡張子別の処理
 augroup fileTypeIndent
 	autocmd!
-	autocmd BufNewFile, BudRead *.rb  setlocal tabstop=2 softtabstop=4 shiftwidth=2
-	autocmd BufNewFile, BudRead *.yml setlocal tabstop=2 softtabstop=2 shiftwidth=2
-	autocmd BufNewFile, BudRead *.toml setlocal tabstop=2 softtabstop=2 shiftwidth=2
+	autocmd BufNewFile,BufRead *.rb   setlocal tabstop=2 softtabstop=4 shiftwidth=2
+	autocmd BufNewFile,BufRead *.yml  setlocal tabstop=2 softtabstop=2 shiftwidth=2
+	autocmd BufNewFile,BufRead *.toml setlocal tabstop=2 softtabstop=2 shiftwidth=2
 augroup END
 
+" ファイルの自動更新
 augroup vimrcCheckTime
     autocmd!
     autocmd WinEnter * checktime
 augroup END
+
+" 行末のスペースをハイライト
+augroup highlightTrailingSpaces
+    autocmd!
+    autocmd VimEnter,WinEnter,ColorScheme * highlight TrailingSpaces term=underline guibg=Red ctermbg=Red
+    autocmd VimEnter,WinEnter * match TrailingSpaces /\s\+$/
+augroup END
+
