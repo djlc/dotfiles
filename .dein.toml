@@ -5,10 +5,13 @@ repo = 'Shougo/dein.vim'
 repo = 'Shougo/vimproc.vim'
 
 [[plugins]]
-repo = 'scrooloose/nerdtree'
+repo = 'Shougo/neosnippet.vim'
 
 [[plugins]]
-repo = 'Townk/vim-autoclose'
+repo = 'Shougo/neocomplete.vim'
+
+[[plugins]]
+repo = 'Shougo/unite.vim'
 
 [[plugins]]
 repo = 'justmao945/vim-clang'
@@ -20,7 +23,5 @@ repo = 'itchyny/lightline.vim'
 repo = 'tomasr/molokai'
 
 [[plugins]]
-repo = 'tpope/vim-fugitive'
+repo = 'thinca/vim-quickrun'
 
-[[plugins]]
-repo = 'chrisbra/csv.vim'
