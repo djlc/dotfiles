@@ -1,3 +1,4 @@
+# Shougo Plugins
 [[plugins]]
 repo = 'Shougo/dein.vim'
 
@@ -8,20 +9,81 @@ repo = 'Shougo/vimproc.vim'
 repo = 'Shougo/neosnippet.vim'
 
 [[plugins]]
+repo = 'Shougo/neomru.vim'
+
+[[plugins]]
 repo = 'Shougo/neocomplete.vim'
+depends = ['Shougo/neoinclude.vim', 'Shougo/context_filetype.vim']
+
+[[plugins]]
+repo = 'Shougo/context_filetype.vim'
+
+[[plugins]]
+repo = 'Shougo/neoinclude.vim'
 
 [[plugins]]
 repo = 'Shougo/unite.vim'
 
+# syntax check
+[[plugins]]
+repo = 'scrooloose/syntastic.git'
+
+# C/C++
 [[plugins]]
 repo = 'justmao945/vim-clang'
+filetypes = ['c', 'cpp']
 
+# lightline
 [[plugins]]
 repo = 'itchyny/lightline.vim'
 
+# color scheme
 [[plugins]]
 repo = 'tomasr/molokai'
 
+# QuickRun
 [[plugins]]
 repo = 'thinca/vim-quickrun'
+
+# indent guide
+[[plugins]]
+repo = 'nathanaelkane/vim-indent-guides'
+
+# highlight same words
+[[plugins]]
+repo = 't9md/vim-quickhl'
+
+# endwise
+[[plugins]]
+repo = 'tpope/vim-endwise'
+
+# html5 + css3
+[[plugins]]
+repo = 'othree/html5.vim'
+
+[[plugins]]
+repo = 'hail2u/vim-css3-syntax'
+
+# javascript
+[[plugins]]
+repo = 'jelera/vim-javascript-syntax'
+
+# browser
+[[plugins]]
+repo = 'tyru/open-browser.vim'
+
+# git
+[[plugins]]
+repo = 'tpope/vim-fugitive'
+
+# toml
+[[plugins]]
+repo = 'cespare/vim-toml'
+
+# markdown
+[[plugins]]
+repo = 'kannokanno/previm'
+
+[[plugins]]
+repo = 'plasticboy/vim-markdown'
 
