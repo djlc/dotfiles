@@ -72,7 +72,21 @@ let g:clang_cpp_options = '-std=c++11 -stdlib=libc++'
 
 " syntaxの設定
 let g:syntastic_enable_signs=1
-let g:syntastic_auto_loc_list=2
+let g:syntastic_auto_loc_list=1
+let g:syntastic_mode_map = {'mode': 'passive'}
+let g:syntastic_enable_signs = 1
+let g:syntastic_error_symbol = '✗'
+let g:syntastic_warning_symbol = '⚠'
+
+augroup AutoSyntastic
+    autocmd!
+    autocmd InsertLeave,TextChanged * call s:syntastic()
+augroup END
+
+function! s:syntastic()
+    w
+    SyntasticCheck
+endfunction
 
 " endwiseの設定
 let g:endwise_no_mappings=1
@@ -100,6 +114,7 @@ set ruler
 set title
 set backspace=indent,eol,start
 set noswapfile
+filetype plugin indent on
 
 " 行末にカーソルを持っていく設定
 inoremap <C-e> <Esc>$a

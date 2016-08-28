@@ -9,6 +9,9 @@ repo = 'Shougo/vimproc.vim'
 repo = 'Shougo/neosnippet.vim'
 
 [[plugins]]
+repo = 'Shougo/neosnippet-snippets'
+
+[[plugins]]
 repo = 'Shougo/neomru.vim'
 
 [[plugins]]
@@ -32,6 +35,9 @@ repo = 'scrooloose/syntastic.git'
 [[plugins]]
 repo = 'justmao945/vim-clang'
 filetypes = ['c', 'cpp']
+
+[[plugins]]
+repo = 'quark-zju/vim-cpp-auto-include'
 
 # lightline
 [[plugins]]
@@ -57,12 +63,18 @@ repo = 't9md/vim-quickhl'
 [[plugins]]
 repo = 'tpope/vim-endwise'
 
-# html5 + css3
+# html/css
 [[plugins]]
 repo = 'othree/html5.vim'
 
 [[plugins]]
 repo = 'hail2u/vim-css3-syntax'
+
+[[plugins]]
+repo = 'amirh/HTML-AutoCloseTag'
+
+[[plugins]]
+repo = 'gko/vim-coloresque'
 
 # javascript
 [[plugins]]
@@ -76,6 +88,10 @@ repo = 'tyru/open-browser.vim'
 [[plugins]]
 repo = 'tpope/vim-fugitive'
 
+# json
+[[plugins]]
+repo = 'elzr/vim-json'
+
 # toml
 [[plugins]]
 repo = 'cespare/vim-toml'
@@ -86,4 +102,9 @@ repo = 'kannokanno/previm'
 
 [[plugins]]
 repo = 'plasticboy/vim-markdown'
+
+# LaTeX
+
+[[plugins]]
+repo = 'lervag/vimtex'
 
