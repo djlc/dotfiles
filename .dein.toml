@@ -104,7 +104,6 @@ repo = 'kannokanno/previm'
 repo = 'plasticboy/vim-markdown'
 
 # LaTeX
-
 [[plugins]]
 repo = 'lervag/vimtex'
 

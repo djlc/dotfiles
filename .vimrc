@@ -33,10 +33,17 @@ let g:neocomplete#force_omni_input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
 let g:neocomplete#force_omni_input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
 """}}}
 
+" neosnippetの設定
+imap <C-k> <Plug>(neosnippet_expand_or_jump)
+smap <C-k> <Plug>(neosnippet_expand_or_jump)
+xmap <C-k> <Plug>(neosnippet_expand_target)
+imap <expr><TAB> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : pumvisible() ? "\<C-n>" : "\<TAB>"
+smap <expr><TAB> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+
 " 'justmao945/vim-clang' {{{
 
 " disable auto completion for vim-clanG
-let g:clang_auto = 1
+let g:clang_auto = 0
 let g:clang_complete_auto = 0
 let g:clang_auto_select = 0
 let g:clang_use_library = 1
@@ -78,15 +85,34 @@ let g:syntastic_enable_signs = 1
 let g:syntastic_error_symbol = '✗'
 let g:syntastic_warning_symbol = '⚠'
 
-augroup AutoSyntastic
-    autocmd!
-    autocmd InsertLeave,TextChanged * call s:syntastic()
-augroup END
-
-function! s:syntastic()
-    w
-    SyntasticCheck
-endfunction
+" quickrunの設定
+let g:quickrun_config = {
+\   '_' : {
+\   'runner' : 'vimproc',
+\   'runner/vimproc/updatetime' : 60,
+\   'outputter' : 'error',
+\   'outputter/error/success' : 'buffer',
+\   'outputter/error/error' : 'quickfix',
+\   'outputter/buffer/split' : 'bo 8sp',
+\   'outputter/buffer/close_on_empty' : 1,
+\   },
+\   'tex' : {
+\   'command' : 'latexmk',
+\   'srcfile' : expand("%"),
+\   'cmdopt': '-pdfdvi',
+\   'hook/sweep/files' : [
+\                      '%S:p:r.aux',
+\                      '%S:p:r.bbl',
+\                      '%S:p:r.blg',
+\                      '%S:p:r.dvi',
+\                      '%S:p:r.fdb_latexmk',
+\                      '%S:p:r.fls',
+\                      '%S:p:r.log',
+\                      '%S:p:r.out'
+\                      ],
+\   'exec': '%c %o %a %s',
+\   },
+\}
 
 " endwiseの設定
 let g:endwise_no_mappings=1
@@ -100,6 +126,7 @@ augroup END
 
 " 各種設定
 syntax on
+set nocompatible
 set tabstop=4
 set shiftwidth=4
 set softtabstop=4
@@ -122,7 +149,6 @@ noremap <C-e> <Esc>$a
 
 " カッコの補完の設定
 inoremap {<Enter> {}<Left><CR><ESC><S-o>
-inoremap [<Enter> []<Left><CR><ESC><S-o>
 inoremap (<Enter> ()<Left><CR><ESC><S-o>
 
 " tabで括弧の外に出る
@@ -142,9 +168,16 @@ set t_Co=256
 augroup fileTypeIndent
 	autocmd!
 	autocmd BufNewFile,BufRead *.rb   setlocal tabstop=2 softtabstop=4 shiftwidth=2
+	autocmd BufNewFile,BufRead *.tex  setlocal tabstop=2 softtabstop=4 shiftwidth=2
 	autocmd BufNewFile,BufRead *.yml  setlocal tabstop=2 softtabstop=2 shiftwidth=2
 	autocmd BufNewFile,BufRead *.toml setlocal tabstop=2 softtabstop=2 shiftwidth=2
 augroup END
+
+" Makefileを編集するときはインデントにTABを使う
+let _curfile=expand("%:r")
+if _curfile == 'makefile' || _curfile == 'Makefile'
+    set noexpandtab
+endif
 
 " ファイルの自動更新
 augroup vimrcCheckTime
