@@ -131,7 +131,7 @@ set tabstop=4
 set shiftwidth=4
 set softtabstop=4
 set encoding=utf-8
-set fileencodings=iso-2022-jp,euc-jp,sjis,utf-8
+set fileencodings=utf-8,iso-2022-jp-3,euc-jisx0213,cp932,euc-jp,sjis,jis,latin,iso-2022-jp
 set ambiwidth=double
 set expandtab
 set smarttab
