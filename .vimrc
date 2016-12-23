@@ -91,7 +91,7 @@ let g:quickrun_config = {
 \   'runner' : 'vimproc',
 \   'runner/vimproc/updatetime' : 60,
 \   'outputter' : 'error',
-\   'outputter/error/success' : 'buffer',
+\   'outputter/error/success' : 'null',
 \   'outputter/error/error' : 'quickfix',
 \   'outputter/buffer/split' : 'bo 8sp',
 \   'outputter/buffer/close_on_empty' : 1,
@@ -111,6 +111,11 @@ let g:quickrun_config = {
 \                      '%S:p:r.out'
 \                      ],
 \   'exec': '%c %o %a %s',
+\   },
+\   'py' : {
+\   'command' : 'python',
+\   'srcfile' : expand("%"),
+\   'exec': '%c %a',
 \   },
 \}
 
@@ -211,8 +216,16 @@ function! Run()
         :!g++ % -o %:r
         :!./%:r
     endif
+    if e == "tex"
+        :w
+        :lcd %:h
+        :!latexmk %
+    endif
 endfunction
 
-command! Gcc call Run()
-nnoremap <F5> :Gcc<CR><CR>
+command! Exec call Run()
+nnoremap <F5> :Exec<CR><CR>
+
+" 新規ファイル作成時のテンプレート読み込み
+autocmd BufNewFile *.tex 0r $HOME/.template_tex
 

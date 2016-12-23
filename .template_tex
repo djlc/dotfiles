@@ -1,0 +1,13 @@
+\AtBeginDvi{\special{pdf:mapfile ptex-ipa.map}}
+\documentclass[a4paper, 10pt, fleqn]{jsarticle}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{bm}
+\usepackage{geometry}
+\geometry{left=25mm,right=25mm,top=30mm,bottom=30mm}
+\title{}
+\author{}
+
+\begin{document}
+
+\end{document}
