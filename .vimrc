@@ -40,51 +40,6 @@ xmap <C-k> <Plug>(neosnippet_expand_target)
 imap <expr><TAB> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : pumvisible() ? "\<C-n>" : "\<TAB>"
 smap <expr><TAB> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
 
-" 'justmao945/vim-clang' {{{
-
-" disable auto completion for vim-clanG
-let g:clang_auto = 0
-let g:clang_complete_auto = 0
-let g:clang_auto_select = 0
-let g:clang_use_library = 1
-
-" default 'longest' can not work with neocomplete
-let g:clang_c_completeopt   = 'menuone'
-let g:clang_cpp_completeopt = 'menuone'
-
-if executable('clang-3.6')
-    let g:clang_exec = 'clang-3.6'
-elseif executable('clang-3.5')
-    let g:clang_exec = 'clang-3.5'
-elseif executable('clang-3.4')
-    let g:clang_exec = 'clang-3.4'
-else
-    let g:clang_exec = 'clang'
-endif
-
-if executable('clang-format-3.6')
-    let g:clang_format_exec = 'clang-format-3.6'
-elseif executable('clang-format-3.5')
-    let g:clang_format_exec = 'clang-format-3.5'
-elseif executable('clang-format-3.4')
-    let g:clang_format_exec = 'clang-format-3.4'
-else
-    let g:clang_exec = 'clang-format'
-endif
-
-let g:clang_c_options = '-std=c11'
-let g:clang_cpp_options = '-std=c++11 -stdlib=libc++'
-
-" }}}
-
-" syntaxの設定
-let g:syntastic_enable_signs=1
-let g:syntastic_auto_loc_list=1
-let g:syntastic_mode_map = {'mode': 'passive'}
-let g:syntastic_enable_signs = 1
-let g:syntastic_error_symbol = '✗'
-let g:syntastic_warning_symbol = '⚠'
-
 " quickrunの設定
 let g:quickrun_config = {
 \   '_' : {
@@ -119,9 +74,6 @@ let g:quickrun_config = {
 \   },
 \}
 
-" endwiseの設定
-let g:endwise_no_mappings=1
-
 " previmの設定
 let g:previm_enable_realtime = 1
 augroup PrevimSettings
@@ -147,10 +99,6 @@ set title
 set backspace=indent,eol,start
 set noswapfile
 filetype plugin indent on
-
-" 行末にカーソルを持っていく設定
-inoremap <C-e> <Esc>$a
-noremap <C-e> <Esc>$a
 
 " カッコの補完の設定
 inoremap {<Enter> {}<Left><CR><ESC><S-o>

@@ -12,14 +12,7 @@ repo = 'Shougo/neosnippet.vim'
 repo = 'Shougo/neosnippet-snippets'
 
 [[plugins]]
-repo = 'Shougo/neomru.vim'
-
-[[plugins]]
 repo = 'Shougo/neocomplete.vim'
-depends = ['Shougo/neoinclude.vim', 'Shougo/context_filetype.vim']
-
-[[plugins]]
-repo = 'Shougo/context_filetype.vim'
 
 [[plugins]]
 repo = 'Shougo/neoinclude.vim'
@@ -28,19 +21,9 @@ repo = 'Shougo/neoinclude.vim'
 repo = 'Shougo/unite.vim'
 
 [[plugins]]
-repo = 'Shougo/vimfiler.vim'
-
-# syntax check
-[[plugins]]
-repo = 'scrooloose/syntastic.git'
+repo = 'Shougo/context_filetype.vim'
 
 # C/C++
-[[plugins]]
-repo = 'justmao945/vim-clang'
-filetypes = ['c', 'cpp']
-
-[[plugins]]
-repo = 'quark-zju/vim-cpp-auto-include'
 
 # lightline
 [[plugins]]
@@ -53,18 +36,6 @@ repo = 'tomasr/molokai'
 # QuickRun
 [[plugins]]
 repo = 'thinca/vim-quickrun'
-
-# indent guide
-[[plugins]]
-repo = 'nathanaelkane/vim-indent-guides'
-
-# highlight same words
-[[plugins]]
-repo = 't9md/vim-quickhl'
-
-# endwise
-[[plugins]]
-repo = 'tpope/vim-endwise'
 
 # html/css
 [[plugins]]
@@ -103,21 +74,9 @@ repo = 'cespare/vim-toml'
 [[plugins]]
 repo = 'kannokanno/previm'
 
-[[plugins]]
-repo = 'plasticboy/vim-markdown'
-
 # LaTeX
 [[plugins]]
 repo = 'lervag/vimtex'
-
-# python
-[[plugins]]
-repo = 'davidhalter/jedi-vim'
-on_ft = 'python'
-hook_add = '''
-  let g:jedi#rename_command = "<leader>R"
-  autocmd FileType python setlocal completeopt-=preview
-'''
 
 # arduino
 [[plugins]]
