@@ -74,6 +74,15 @@ let g:quickrun_config = {
 \   },
 \}
 
+" clangの設定
+let g:marching_clang_command = "/usr/bin/clang"
+" includeディレクトリ
+let g:marching_include_paths = [
+\   "/usr/include"
+\]
+" nwocomplete.vimと併用
+let g:marching_enable_neocomplete = 1
+
 " previmの設定
 let g:previm_enable_realtime = 1
 augroup PrevimSettings

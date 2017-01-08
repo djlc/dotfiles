@@ -24,6 +24,8 @@ repo = 'Shougo/unite.vim'
 repo = 'Shougo/context_filetype.vim'
 
 # C/C++
+[[plugins]]
+repo = 'osyo-manga/vim-marching'
 
 # lightline
 [[plugins]]
