@@ -113,13 +113,13 @@ filetype plugin indent on
 inoremap {<Enter> {}<Left><CR><ESC><S-o>
 inoremap (<Enter> ()<Left><CR><ESC><S-o>
 
-" tabで括弧の外に出る
-noremap <silent> <C-f> <ESC>/)\\|}\\|]\\|"\\|'<CR>a
-inoremap <silent> <C-f> <ESC>/)\\|}\\|]\\|"\\|'<CR>a
-
 " xでヤンクしない
 nnoremap x "_x
 nnoremap D "_D
+
+" Esc -> Ctrl-J
+noremap <C-j> <esc>
+noremap! <C-j> <esc>
 
 " color schemeの設定
 colorscheme koehler
@@ -159,29 +159,6 @@ function! ImInActivate()
     call system('fcitx-remote -c')
 endfunction
 inoremap <silent> <C-[> <ESC>:call ImInActivate()<CR>
-
-" 実行コマンド
-function! Run()
-    let e = expand("%:e")
-    if e == "c"
-        :w
-        :!gcc % -o %:r
-        :!./%:r
-    endif
-    if e == "cpp"
-        :w
-        :!g++ % -o %:r
-        :!./%:r
-    endif
-    if e == "tex"
-        :w
-        :lcd %:h
-        :!latexmk %
-    endif
-endfunction
-
-command! Exec call Run()
-nnoremap <F5> :Exec<CR><CR>
 
 " 新規ファイル作成時のテンプレート読み込み
 autocmd BufNewFile *.tex 0r $HOME/.template_tex
