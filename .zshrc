@@ -1,3 +1,4 @@
+# PATH
 export PATH=/usr/local/bin:$PATH
 
 # 補完機能を有効にする
@@ -7,7 +8,18 @@ compinit
 # 色分け
 autoload colors
 colors
-alias ls="gls --color"
+
+# macの場合はglsをエイリアスに設定
+case ${OSTYPE} in
+    darwin*)
+    alias ls="gls --color"
+        ;;
+    linux*)
+    alias ls="ls -GF --color"
+        ;;
+esac
+
+# プロンプトの表示設定
 PROMPT="%{$fg[green]%}%m%(!.#.$) %{$reset_color%}"
 PROMPT2="%{$fg[green]%}%_> %{$reset_color%}"
 SPROMPT="%{$fg[red]%}correct: %R -> %r [nyae]? %{$reset_color%}"
