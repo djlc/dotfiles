@@ -80,6 +80,10 @@ let g:marching_clang_command = "/usr/bin/clang"
 let g:marching_include_paths = [
 \   "/usr/include"
 \]
+" pchファイルを使う
+let g:marching#clang_command#options = {
+\   "cpp" : "-std=gnu++1y -include-pch ~/dotfiles/.header.h.pch"
+\}
 " nwocomplete.vimと併用
 let g:marching_enable_neocomplete = 1
 
