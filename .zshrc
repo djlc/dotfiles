@@ -9,16 +9,6 @@ compinit
 autoload colors
 colors
 
-# macの場合はglsをエイリアスに設定
-case ${OSTYPE} in
-    darwin*)
-    alias ls="gls --color"
-        ;;
-    linux*)
-    alias ls="ls -GF --color"
-        ;;
-esac
-
 # プロンプトの表示設定
 PROMPT="%{$fg[green]%}%m%(!.#.$) %{$reset_color%}"
 PROMPT2="%{$fg[green]%}%_> %{$reset_color%}"
@@ -45,4 +35,10 @@ setopt print_eight_bit
 
 # '#'以降をコメントとして扱う
 setopt interactive_comments
+
+# OS別の設定
+[ -f dotfiles/.zshrc_`uname` ] && . dotfiles/.zshrc_`uname`
+
+# マシン依存の設定
+[ -f dotfiles/.zshrc_local ] && . dotfiles/.zshrc_local
 

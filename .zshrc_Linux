@@ -1,0 +1,2 @@
+# lsのカラー表示
+alias ls="ls -GF --color"

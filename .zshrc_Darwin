@@ -1,0 +1,3 @@
+# lsのカラー表示
+alias ls="gls --color"
+
