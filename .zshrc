@@ -1,5 +1,6 @@
 # PATH
 export PATH=/usr/local/bin:$PATH
+export PATH=/opt/riscv/bin:$PATH
 
 # 補完機能を有効にする
 autoload -Uz compinit
@@ -41,4 +42,11 @@ setopt interactive_comments
 
 # マシン依存の設定
 [ -f dotfiles/.zshrc_local ] && . dotfiles/.zshrc_local
+
+#Start tmux on every shell login
+#https://wiki.archlinux.org/index.php/Tmux#Start_tmux_on_every_shell_login
+if which tmux 2>&1 >/dev/null; then
+    #if not inside a tmux session, and if no session is started, start a new session
+    test -z "$TMUX" && (tmux attach || tmux new-session)
+fi
 

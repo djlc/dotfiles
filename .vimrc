@@ -24,13 +24,13 @@ endif
 "End dein Scripts-------------------------
 
 " Shougo/neocomplete.vim' {{{
-let g:neocomplete#enable_at_startup = 1
-if !exists('g:neocomplete#force_omni_input_patterns')
-        let g:neocomplete#force_omni_input_patterns = {}
-endif
-let g:neocomplete#force_overwrite_completefunc = 1
-let g:neocomplete#force_omni_input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
-let g:neocomplete#force_omni_input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
+" let g:neocomplete#enable_at_startup = 1
+"if !exists('g:neocomplete#force_omni_input_patterns')
+"        let g:neocomplete#force_omni_input_patterns = {}
+"endif
+"let g:neocomplete#force_overwrite_completefunc = 1
+"let g:neocomplete#force_omni_input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
+"let g:neocomplete#force_omni_input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
 """}}}
 
 " neosnippetの設定
@@ -74,19 +74,6 @@ let g:quickrun_config = {
 \   },
 \}
 
-" clangの設定
-let g:marching_clang_command = "/usr/bin/clang"
-" includeディレクトリ
-let g:marching_include_paths = [
-\   "/usr/include"
-\]
-" pchファイルを使う
-let g:marching#clang_command#options = {
-\   "cpp" : "-std=gnu++1y -include-pch ~/dotfiles/.header.h.pch"
-\}
-" nwocomplete.vimと併用
-let g:marching_enable_neocomplete = 1
-
 " previmの設定
 let g:previm_enable_realtime = 1
 augroup PrevimSettings
@@ -112,6 +99,19 @@ set title
 set backspace=indent,eol,start
 set noswapfile
 filetype plugin indent on
+
+" enable mouse
+set mouse=a
+
+" cursor line
+set cursorline
+
+" always shows statusline
+set laststatus=2
+
+" clipboard
+set clipboard=unnamedplus
+
 
 " カッコの補完の設定
 inoremap {<Enter> {}<Left><CR><ESC><S-o>

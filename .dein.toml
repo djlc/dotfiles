@@ -34,10 +34,6 @@ repo = 'Shougo/context_filetype.vim'
 [[plugins]]
 repo = 'Shougo/vimfiler.vim'
 
-# C/C++
-[[plugins]]
-repo = 'osyo-manga/vim-marching'
-
 # python
 [[plugins]]
 repo = 'davidhalter/jedi-vim'
@@ -101,4 +97,8 @@ repo = 'lervag/vimtex'
 # arduino
 [[plugins]]
 repo = 'sudar/vim-arduino-syntax'
+
+# tmux
+[[plugins]]
+repo = 'christoomey/vim-tmux-navigator'
 
