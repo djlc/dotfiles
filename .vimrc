@@ -34,52 +34,52 @@ endif
 """}}}
 
 " neosnippetの設定
-imap <C-k> <Plug>(neosnippet_expand_or_jump)
-smap <C-k> <Plug>(neosnippet_expand_or_jump)
-xmap <C-k> <Plug>(neosnippet_expand_target)
-imap <expr><TAB> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : pumvisible() ? "\<C-n>" : "\<TAB>"
-smap <expr><TAB> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+" imap <C-k> <Plug>(neosnippet_expand_or_jump)
+" smap <C-k> <Plug>(neosnippet_expand_or_jump)
+" xmap <C-k> <Plug>(neosnippet_expand_target)
+" imap <expr><TAB> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : pumvisible() ? "\<C-n>" : "\<TAB>"
+" smap <expr><TAB> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
 
 " quickrunの設定
-let g:quickrun_config = {
-\   '_' : {
-\   'runner' : 'vimproc',
-\   'runner/vimproc/updatetime' : 60,
-\   'outputter' : 'error',
-\   'outputter/error/success' : 'null',
-\   'outputter/error/error' : 'quickfix',
-\   'outputter/buffer/split' : 'bo 8sp',
-\   'outputter/buffer/close_on_empty' : 1,
-\   },
-\   'tex' : {
-\   'command' : 'latexmk',
-\   'srcfile' : expand("%"),
-\   'cmdopt': '-pdfdvi',
-\   'hook/sweep/files' : [
-\                      '%S:p:r.aux',
-\                      '%S:p:r.bbl',
-\                      '%S:p:r.blg',
-\                      '%S:p:r.dvi',
-\                      '%S:p:r.fdb_latexmk',
-\                      '%S:p:r.fls',
-\                      '%S:p:r.log',
-\                      '%S:p:r.out'
-\                      ],
-\   'exec': '%c %o %a %s',
-\   },
-\   'py' : {
-\   'command' : 'python',
-\   'srcfile' : expand("%"),
-\   'exec': '%c %a',
-\   },
-\}
+"let g:quickrun_config = {
+"\   '_' : {
+"\   'runner' : 'vimproc',
+"\   'runner/vimproc/updatetime' : 60,
+"\   'outputter' : 'error',
+"\   'outputter/error/success' : 'null',
+"\   'outputter/error/error' : 'quickfix',
+"\   'outputter/buffer/split' : 'bo 8sp',
+"\   'outputter/buffer/close_on_empty' : 1,
+"\   },
+"\   'tex' : {
+"\   'command' : 'latexmk',
+"\   'srcfile' : expand("%"),
+"\   'cmdopt': '-pdfdvi',
+"\   'hook/sweep/files' : [
+"\                      '%S:p:r.aux',
+"\                      '%S:p:r.bbl',
+"\                      '%S:p:r.blg',
+"\                      '%S:p:r.dvi',
+"\                      '%S:p:r.fdb_latexmk',
+"\                      '%S:p:r.fls',
+"\                      '%S:p:r.log',
+"\                      '%S:p:r.out'
+"\                      ],
+"\   'exec': '%c %o %a %s',
+"\   },
+"\   'py' : {
+"\   'command' : 'python',
+"\   'srcfile' : expand("%"),
+"\   'exec': '%c %a',
+"\   },
+"\}
 
 " previmの設定
-let g:previm_enable_realtime = 1
-augroup PrevimSettings
-    autocmd!
-    autocmd BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*} set filetype=markdown
-augroup END
+"let g:previm_enable_realtime = 1
+"augroup PrevimSettings
+"    autocmd!
+"    autocmd BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*} set filetype=markdown
+"augroup END
 
 " 各種設定
 syntax on
@@ -112,6 +112,9 @@ set laststatus=2
 " clipboard
 set clipboard=unnamedplus
 
+" tab
+set listchars=tab:>-.
+set list
 
 " カッコの補完の設定
 inoremap {<Enter> {}<Left><CR><ESC><S-o>
@@ -166,4 +169,7 @@ inoremap <silent> <C-[> <ESC>:call ImInActivate()<CR>
 
 " 新規ファイル作成時のテンプレート読み込み
 autocmd BufNewFile *.tex 0r $HOME/.template_tex
+
+" deoplete
+" let g:deoplete#enable_at_startup = 1
 

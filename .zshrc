@@ -1,6 +1,8 @@
 # PATH
+export PATH=/usr/local/texlive/2021/bin/x86_64-linux/:$PATH
 export PATH=/usr/local/bin:$PATH
 export PATH=/opt/riscv/bin:$PATH
+export PATH=~/.deno/bin:$PATH
 
 # 補完機能を有効にする
 autoload -Uz compinit
