@@ -75,7 +75,7 @@ noremap <C-j> <esc>
 noremap! <C-j> <esc>
 
 " color schemeの設定
-colorscheme molokai
+colorscheme iceberg
 autocmd VimEnter,ColorScheme * highlight Normal ctermbg=none
 set t_Co=256
 

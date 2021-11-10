@@ -1,18 +1,31 @@
 #!/bin/bash
 
 # symbolic links setting
-DOT_FILES=(.bashrc .bash_profile .zshrc .vimrc .dein.toml .gvimrc .latexmkrc .tmux.conf)
+DOT_FILES=(.bashrc .bash_profile .zshrc .vimrc .gvimrc .latexmkrc .tmux.conf)
 for file in ${DOT_FILES[@]}
 do
-	ln -s $HOME/dotfiles/$file $HOME/$file
+    if [ ! -e $HOME/$file ]; then
+        ln -s $HOME/dotfiles/$file $HOME/$file
+    fi
 done
 
 # neovim
+mkdir -p $HOME/.config/nvim
+
 FILES=(init.vim dein.toml)
 for file in ${FILES[@]}
 do
-	ln -s $HOME/dotfiles/$file $HOME/.config/nvim/$file
+    if [ ! -e $HOME/.config/nvim/$file ]; then
+        ln -s $HOME/dotfiles/$file $HOME/.config/nvim/$file
+    fi
 done
+
+# neovim binary
+if [ -e $HOME/nvim.appimage ]; then
+    wget https://github.com/neovim/neovim/releases/download/stable/nvim.appimage -P $HOME/appimage
+    sudo ln -s $HOME/appimage/nvim.appimage /usr/bin/nvim
+    pip3 install --user pynvim
+fi
 
 # git
 git config --global user.name "djlc"
