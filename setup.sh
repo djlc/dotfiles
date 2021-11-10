@@ -7,6 +7,13 @@ do
 	ln -s $HOME/dotfiles/$file $HOME/$file
 done
 
+# neovim
+FILES=(init.vim dein.toml)
+for file in ${FILES[@]}
+do
+	ln -s $HOME/dotfiles/$file $HOME/.config/nvim/$file
+done
+
 # git
 git config --global user.name "djlc"
 git config --global user.email "cdn60127@gmail.com"

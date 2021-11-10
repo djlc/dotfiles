@@ -8,13 +8,14 @@ if !isdirectory(s:dein_repo_dir)
 endif
 let &runtimepath = s:dein_repo_dir .",". &runtimepath
 " プラグイン読み込み＆キャッシュ作成
-let s:toml_file = fnamemodify(expand('<sfile>'), ':h').'/.dein.toml'
+let s:toml_file = fnamemodify(expand('<sfile>'), ':h').'/dein.toml'
 if dein#load_state(s:dein_dir)
-  call dein#begin(s:dein_dir, [$MYVIMRC, s:toml_file])
-  call dein#load_toml(s:toml_file)
+  call dein#begin(s:dein_dir)
+  call dein#load_toml(s:toml_file, {'lazy': 0})
   call dein#end()
   call dein#save_state()
 endif
+
 " 不足プラグインの自動インストール
 if has('vim_starting') && dein#check_install()
   call dein#install()
@@ -22,64 +23,6 @@ endif
 " }}}
 
 "End dein Scripts-------------------------
-
-" Shougo/neocomplete.vim' {{{
-" let g:neocomplete#enable_at_startup = 1
-"if !exists('g:neocomplete#force_omni_input_patterns')
-"        let g:neocomplete#force_omni_input_patterns = {}
-"endif
-"let g:neocomplete#force_overwrite_completefunc = 1
-"let g:neocomplete#force_omni_input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
-"let g:neocomplete#force_omni_input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
-"""}}}
-
-" neosnippetの設定
-" imap <C-k> <Plug>(neosnippet_expand_or_jump)
-" smap <C-k> <Plug>(neosnippet_expand_or_jump)
-" xmap <C-k> <Plug>(neosnippet_expand_target)
-" imap <expr><TAB> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : pumvisible() ? "\<C-n>" : "\<TAB>"
-" smap <expr><TAB> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
-
-" quickrunの設定
-"let g:quickrun_config = {
-"\   '_' : {
-"\   'runner' : 'vimproc',
-"\   'runner/vimproc/updatetime' : 60,
-"\   'outputter' : 'error',
-"\   'outputter/error/success' : 'null',
-"\   'outputter/error/error' : 'quickfix',
-"\   'outputter/buffer/split' : 'bo 8sp',
-"\   'outputter/buffer/close_on_empty' : 1,
-"\   },
-"\   'tex' : {
-"\   'command' : 'latexmk',
-"\   'srcfile' : expand("%"),
-"\   'cmdopt': '-pdfdvi',
-"\   'hook/sweep/files' : [
-"\                      '%S:p:r.aux',
-"\                      '%S:p:r.bbl',
-"\                      '%S:p:r.blg',
-"\                      '%S:p:r.dvi',
-"\                      '%S:p:r.fdb_latexmk',
-"\                      '%S:p:r.fls',
-"\                      '%S:p:r.log',
-"\                      '%S:p:r.out'
-"\                      ],
-"\   'exec': '%c %o %a %s',
-"\   },
-"\   'py' : {
-"\   'command' : 'python',
-"\   'srcfile' : expand("%"),
-"\   'exec': '%c %a',
-"\   },
-"\}
-
-" previmの設定
-"let g:previm_enable_realtime = 1
-"augroup PrevimSettings
-"    autocmd!
-"    autocmd BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*} set filetype=markdown
-"augroup END
 
 " 各種設定
 syntax on
@@ -99,6 +42,9 @@ set title
 set backspace=indent,eol,start
 set noswapfile
 filetype plugin indent on
+
+" disable conceal
+set conceallevel=0
 
 " enable mouse
 set mouse=a
@@ -129,7 +75,7 @@ noremap <C-j> <esc>
 noremap! <C-j> <esc>
 
 " color schemeの設定
-colorscheme koehler
+colorscheme molokai
 autocmd VimEnter,ColorScheme * highlight Normal ctermbg=none
 set t_Co=256
 
@@ -155,11 +101,11 @@ augroup vimrcCheckTime
 augroup END
 
 " 行末のスペースをハイライト
-augroup highlightTrailingSpaces
-    autocmd!
-    autocmd VimEnter,WinEnter,ColorScheme * highlight TrailingSpaces term=underline guibg=Red ctermbg=Red
-    autocmd VimEnter,WinEnter * match TrailingSpaces /\s\+$/
-augroup END
+"augroup highlightTrailingSpaces
+"    autocmd!
+"    autocmd VimEnter,WinEnter,ColorScheme * highlight TrailingSpaces term=underline guibg=Red ctermbg=Red
+"    autocmd VimEnter,WinEnter * match TrailingSpaces /\s\+$/
+"augroup END
 
 " IMEの制御
 function! ImInActivate()
@@ -169,6 +115,8 @@ inoremap <silent> <C-[> <ESC>:call ImInActivate()<CR>
 
 " 新規ファイル作成時のテンプレート読み込み
 autocmd BufNewFile *.tex 0r $HOME/.template_tex
+
+" let g:deoplete#enable_at_startup = 1
 
 " defx key bind
 autocmd FileType defx call s:defx_my_settings()
