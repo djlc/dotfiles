@@ -2,7 +2,12 @@
 export PATH=/usr/local/texlive/2021/bin/x86_64-linux/:$PATH
 export PATH=/usr/local/bin:$PATH
 export PATH=/opt/riscv/bin:$PATH
+export PATH=~/MATLAB/R2021b/bin:$PATH
 export PATH=~/.deno/bin:$PATH
+
+# alias
+alias vim='nvim'
+alias la='ls -la'
 
 # 補完機能を有効にする
 autoload -Uz compinit

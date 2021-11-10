@@ -19,6 +19,7 @@ on_i = 1
 [[plugins]]
 repo = 'Shougo/neosnippet.vim'
 hook_add = '''
+  let g:neosnippet#snippets_directory = '~/.vim/dein/repos/github.com/honza/vim-snippets/snippets'
   imap <C-k>     <Plug>(neosnippet_expand_or_jump)
   smap <C-k>     <Plug>(neosnippet_expand_or_jump)
   xmap <C-k>     <Plug>(neosnippet_expand_target)
@@ -88,3 +89,20 @@ repo = 'christoomey/vim-tmux-navigator'
 [[plugins]]
 repo = 'lervag/vimtex'
 
+# matlab
+[[plugins]]
+repo = 'MortenStabenau/matlab-vim'
+hook_add = '''
+  let g:matlab_panel_size = 50
+'''
+
+# snippet
+[[plugins]]
+repo = 'honza/vim-snippets'
+
+# icon
+[[plugins]]
+repo = 'ryanoasis/vim-devicons'
+
+[[plugins]]
+repo = 'kristijanhusak/defx-icons'

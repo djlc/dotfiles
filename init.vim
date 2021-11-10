@@ -43,6 +43,9 @@ set backspace=indent,eol,start
 set noswapfile
 filetype plugin indent on
 
+" guifont for icons
+set guifont=Droid\ Sans\ Mono\ for\ Powerline\ Nerd\ Font\ Complete\ 10
+
 " disable conceal
 set conceallevel=0
 
@@ -185,3 +188,22 @@ function! s:defx_my_settings() abort
     nnoremap <silent><buffer><expr> cd
                 \ defx#do_action('change_vim_cwd')
 endfunction
+
+call defx#custom#option('_', {
+    \ 'winwidth': 40,
+    \ 'split': 'no',
+    \ 'direction': 'topleft',
+    \ 'show_ignored_files': 1,
+    \ 'buffer_name': 'explorer',
+    \ 'toggle': 1,
+    \ 'resume': 1,
+    \ 'columns': 'indent:icons:filename:mark'
+    \ })
+
+" defx launch bind
+nnoremap <silent> <Leader>f :<C-u> Defx <CR>
+
+" defx auto refresh
+autocmd BufWritePost * call defx#redraw()
+autocmd BufEnter * call defx#redraw()
+
