@@ -65,6 +65,9 @@ set clipboard=unnamedplus
 set listchars=tab:>-.
 set list
 
+" disable preview window in neosnippet candidates.
+set completeopt-=preview
+
 " カッコの補完の設定
 inoremap {<Enter> {}<Left><CR><ESC><S-o>
 inoremap (<Enter> ()<Left><CR><ESC><S-o>
