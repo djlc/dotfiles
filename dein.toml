@@ -100,9 +100,7 @@ hook_add = '''
 [[plugins]]
 repo = 'honza/vim-snippets'
 
-# icon
+# quickrun
 [[plugins]]
-repo = 'ryanoasis/vim-devicons'
+repo = 'thinca/vim-quickrun'
 
-[[plugins]]
-repo = 'kristijanhusak/defx-icons'
