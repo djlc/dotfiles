@@ -233,4 +233,6 @@ let g:quickrun_config['tex'] = {
 \                      '%S:p:r.out'
 \                      ],
 \ 'exec': '%c %o %a %s',
+\ 'runner': 'vimproc',
+\ 'runner/vimproc/updatetime': 40,
 \}
