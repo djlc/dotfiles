@@ -1,32 +1,26 @@
-# PATH
-export PATH=/usr/local/texlive/2021/bin/x86_64-linux/:$PATH
-export PATH=/usr/local/bin:$PATH
-export PATH=/opt/riscv/bin:$PATH
-export PATH=~/MATLAB/R2021b/bin:$PATH
-export PATH=~/.deno/bin:$PATH
-
 # alias
 alias vim='nvim'
-alias la='ls -la'
+alias ls='ls --color=auto'
+alias grep='grep --color=auto'
 
-# 補完機能を有効にする
+# enable completion
 autoload -Uz compinit
 compinit
 
-# 色分け
+# colored
 autoload colors
 colors
 
-# プロンプトの表示設定
+# prompt appearance
 PROMPT="%{$fg[green]%}%m%(!.#.$) %{$reset_color%}"
 PROMPT2="%{$fg[green]%}%_> %{$reset_color%}"
 SPROMPT="%{$fg[red]%}correct: %R -> %r [nyae]? %{$reset_color%}"
 RPROMPT="%{$fg[cyan]%}[%~]%{$reset_color%}"
 
-# cdしたら自動的にpushdする
+# pushd automatically when cd
 setopt auto_pushd
 
-# 重複したディレクトリを追加しない
+# not add duplicated dir
 setopt pushd_ignore_dups
 
 # global alias
@@ -38,16 +32,16 @@ HISTFILE=~/.zsh_history
 HISTSIZE=1000000
 SAVEHIST=1000000
 
-# 日本語ファイル名を表示可能にする
+# for japanese character file
 setopt print_eight_bit
 
-# '#'以降をコメントとして扱う
+# regard after "#" as comment
 setopt interactive_comments
 
-# OS別の設定
+# OS setting
 [ -f dotfiles/.zshrc_`uname` ] && . dotfiles/.zshrc_`uname`
 
-# マシン依存の設定
+# settings for depending on machines
 [ -f dotfiles/.zshrc_local ] && . dotfiles/.zshrc_local
 
 #Start tmux on every shell login
